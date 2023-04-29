@@ -19,10 +19,25 @@ export const Drink = (props) => {
     <button class="order-btn">
       Objednat
     </button>
-  </div>`;
+  </div>
+  `;
+
+  // const orderBtnElm = element.querySelector('.order-btn');
+
+  // orderBtnElm.addEventListener("click",() => {fetch(`https://cafelora.kodim.app/api/me/drinks/${id}`),{
+
+  // }})
+
+  // if (ordered === true) {
+  //   orderBtnElm.innerHTML = 'Zrušit';
+  //   orderBtnElm.classList.add('order-btn--ordered');
+  // }
 
   const drinkInfo = element.querySelector('.drink__info');
-  drinkInfo.append(Layer());
+
+  layers.map((layer) => {
+    drinkInfo.append(Layer(layer));
+  });
 
   return element;
 };

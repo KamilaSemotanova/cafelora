@@ -16,17 +16,10 @@ export const Menu = (props) => {
     </p>
     `;
 
-  element.innerHTML += `
-    <div class="order-detail">
-      <a href="/objednavka">Detail objednávky</a>
-    </div>
-  </div>`;
-
   if (drinks === 'loading') {
     fetch('https://cafelora.kodim.app/api/me/drinks', {
       method: 'GET',
       headers: {
-        'Content-Type': 'application/json',
         Authorization: `Bearer ${localStorage.getItem('token')}`,
       },
     })
@@ -39,6 +32,12 @@ export const Menu = (props) => {
   } else {
     element.append(DrinkList(drinks));
   }
+
+  element.innerHTML += `
+    <div class="order-detail">
+      <a href="/objednavka">Detail objednávky</a>
+    </div>
+  </div>`;
 
   return element;
 };
