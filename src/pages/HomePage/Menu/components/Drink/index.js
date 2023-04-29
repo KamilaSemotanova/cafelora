@@ -22,16 +22,34 @@ export const Drink = (props) => {
   </div>
   `;
 
-  // const orderBtnElm = element.querySelector('.order-btn');
+  const orderBtnElm = element.querySelector('.order-btn');
 
-  // orderBtnElm.addEventListener("click",() => {fetch(`https://cafelora.kodim.app/api/me/drinks/${id}`),{
+  orderBtnElm.addEventListener('click', () => {
+    fetch(`https://cafelora.kodim.app/api/me/drinks/${id}`, {
+      method: 'PATCH',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${localStorage.getItem('token')}`,
+      },
+      body: JSON.stringify({
+        ordered: !ordered,
+      }),
+    })
+      .then((response) => {
+        return response.json();
+      })
+      .then((data) => {
+        element.replaceWith(Drink(data.result));
+      });
+  });
 
-  // }})
-
-  // if (ordered === true) {
-  //   orderBtnElm.innerHTML = 'Zrušit';
-  //   orderBtnElm.classList.add('order-btn--ordered');
-  // }
+  if (ordered === true) {
+    orderBtnElm.innerHTML = 'Zrušit';
+    orderBtnElm.classList.add('order-btn--ordered');
+  } else {
+    orderBtnElm.innerHTML = 'Objednat';
+    orderBtnElm.classList.remove('order-btn--ordered');
+  }
 
   const drinkInfo = element.querySelector('.drink__info');
 

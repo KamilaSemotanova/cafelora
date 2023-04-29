@@ -1,5 +1,6 @@
 import './style.css';
 import { DrinkList } from './DrinkList';
+import { OrderDetail } from './components/OrderDetails';
 
 export const Menu = (props) => {
   const { drinks } = props;
@@ -33,11 +34,7 @@ export const Menu = (props) => {
     element.append(DrinkList(drinks));
   }
 
-  element.innerHTML += `
-    <div class="order-detail">
-      <a href="/objednavka">Detail objednávky</a>
-    </div>
-  </div>`;
+  element.append(OrderDetail());
 
   return element;
 };
