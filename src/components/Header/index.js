@@ -1,8 +1,12 @@
 import './style.css';
 
-export const Header = () => {
+export const Header = (props) => {
+  const { showMenu } = props;
+
   const element = document.createElement('header');
-  element.innerHTML = `
+
+  if (showMenu === true) {
+    element.innerHTML = `
   <div class="header__content container">
   <div class="site-logo"></div>
 
@@ -27,6 +31,17 @@ export const Header = () => {
   rolloutNavElm.addEventListener('click', () => {
     rolloutNavElm.classList.toggle('nav-closed');
   });
+
+  } else {
+    element.innerHTML = `
+    <div class="header__content container">
+      <div class="site-logo"></div>
+        <nav class="inline-nav">
+        <a href="/">Hlavní stránka</a>
+      </nav>
+
+    </div>`;
+  }
 
   return element;
 };

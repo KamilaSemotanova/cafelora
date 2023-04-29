@@ -6,21 +6,22 @@ import { Menu } from './pages/HomePage/components/Menu';
 import { Galerie } from './pages/HomePage/components/Galerie';
 import { Contact } from './pages/HomePage/components/Contact';
 import { HomePage } from './pages/HomePage/index.js';
+import { OrderPage } from './pages/OrderPage';
 
 const appElement = document.querySelector('#app');
-
-appElement.append(
-  HomePage(),
-  Header(),
-  Banner(),
-  Menu({ drinks: 'loading' }),
-  Galerie(),
-  Contact(),
-  Footer(),
-);
 
 const { pathname } = window.location;
 
 if (pathname === '/') {
-  document.querySelector('#app').append(HomePage());
+  appElement.append(
+    HomePage(),
+    Header({ showMenu: true }),
+    Banner(),
+    Menu({ drinks: 'loading' }),
+    Galerie(),
+    Contact(),
+    Footer(),
+  );
+} else if (pathname === '/objednavka') {
+  appElement.append(OrderPage());
 }
