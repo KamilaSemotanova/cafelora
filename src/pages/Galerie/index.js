@@ -3,6 +3,7 @@ import './style.css';
 export const Galerie = () => {
   const element = document.createElement('section');
   element.classList.add('gallery');
+  element.setAttribute('id', 'gallery');
 
   element.innerHTML += `
     <div class="container">

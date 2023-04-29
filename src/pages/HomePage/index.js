@@ -7,6 +7,8 @@ import { Contact } from '../Contact';
 
 export const HomePage = () => {
   const element = document.createElement('main');
+  element.setAttribute('id', 'main');
+
   element.append(Header());
   element.append(Banner());
   element.append(Menu());
