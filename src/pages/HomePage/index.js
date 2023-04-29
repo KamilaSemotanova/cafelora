@@ -9,12 +9,7 @@ export const HomePage = () => {
   const element = document.createElement('main');
   element.setAttribute('id', 'main');
 
-  element.append(Header());
-  element.append(Banner());
-  element.append(Menu());
-  element.append(Galerie());
-  element.append(Contact());
-  element.append(Footer());
+  element.append(Header(), Banner(), Menu({ drinks: 'loading' }),Galerie(), Contact(),Footer());
 
   return element;
 };
